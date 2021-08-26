@@ -28,10 +28,21 @@ function getPlayerChoice() {
 function makeRandomComputerChoice() {
   console.log("makeRandomComputerChoice");
   userChoice = this.classList.value;
+
   console.log("user choose " + userChoice);
+
   let randomNumber = Math.floor(Math.random() * 3);
   computerChoice = choices[randomNumber];
+
   console.log("computer choose " + computerChoice);
+
+  winner = userChoice + computerChoice;
+  console.log(winner);
+
+  document.querySelector("#lose").classList.add("hidden");
+  document.querySelector("#win").classList.add("hidden");
+  document.querySelector("#draw").classList.add("hidden");
+
   showAnimations();
 }
 
@@ -67,22 +78,44 @@ function determineWinner() {
   console.log("determineWinner");
 
   if (winner === "rockscissors") {
-    showLose();
-  } else if (winner === "user") {
-    showWin();
-  } else {
-    showDraw();
+    setTimeout(showWin, 2500);
+  } else if (winner === "rockpaper") {
+    setTimeout(showLose, 2500);
+  } else if (winner === "rockrock") {
+    setTimeout(showDraw, 2500);
+  }
+
+  if (winner === "paperscissors") {
+    setTimeout(showLose, 2500);
+  } else if (winner === "paperrock") {
+    setTimeout(showWin, 2500);
+  } else if (winner === "paperpaper") {
+    setTimeout(showDraw, 2500);
+  }
+
+  if (winner === "scissorsrock") {
+    setTimeout(showLose, 2500);
+  } else if (winner === "scissorspaper") {
+    setTimeout(showWin, 2500);
+  } else if (winner === "scissorsscissors") {
+    setTimeout(showDraw, 2500);
   }
 }
 
 function showWin() {
   console.log("showWin");
+  document.querySelector("#win").classList.remove("hidden");
+  document.querySelector("#win").offsetheight;
 }
 
 function showLose() {
   console.log("showLose");
+  document.querySelector("#lose").classList.remove("hidden");
+  document.querySelector("#lose").offsetheight;
 }
 
 function showDraw() {
   console.log("showDraw");
+  document.querySelector("#draw").classList.remove("hidden");
+  document.querySelector("#draw").offsetheight;
 }
